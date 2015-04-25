@@ -19,7 +19,7 @@ class Player
         @pos = tds[0]
         @name = tds[1]
         @team = tds[2]
-        @salary = tds[8]
+        @salary = tds[8].gsub(/\D/,'').to_i
         @fp_today = tds[9].to_f
         @value_today = tds[10].to_f
     end
@@ -38,5 +38,9 @@ class Player
 
     def name
         @name
+    end
+
+    def salary
+        @salary
     end
 end
