@@ -25,10 +25,14 @@ class Player
     end
 
     def display
-        puts "#{@name} #{@salary} : #{@value_today}"
+        puts "#{@pos} : #{@name} #{@salary} : #{@value_today}"
     end
 
     def fp_today
         @fp_today
+    end
+
+    def position
+        @pos
     end
 end

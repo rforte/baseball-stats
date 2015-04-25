@@ -8,6 +8,7 @@ a = Mechanize.new { |agent|
 }
 
 players = []
+player_sets = {}
 
 a.get("http://www.rotowire.com/daily/mlb/value-report.htm") do |page|
     rows = page.search('table').search('tr')
@@ -20,8 +21,15 @@ a.get("http://www.rotowire.com/daily/mlb/value-report.htm") do |page|
     active_players = players.select { |p| p.fp_today > 0.0 }
 
     active_players.each do |ap|
-        ap.display
+        pos = ap.position
+        player_sets[pos] = [] unless player_sets.has_key?(pos)
+        player_sets[pos] << ap
     end
 
-    pp active_players.count
+    # player_sets["P"].each do |pitcher|
+    #     pitcher.display
+    # end
+    # pp active_players.count
+
+    pp player_sets.keys
 end
